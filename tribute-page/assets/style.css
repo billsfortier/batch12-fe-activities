@@ -18,7 +18,7 @@ body {
 }
 
 h1 {
-    line-height: 4em;
+    line-height: 1.5em;
 }
 
 #main {
@@ -32,7 +32,7 @@ h1 {
 header {
     width: 100%;
     height: auto;
-    z-index: 3;
+    z-index: 9;
 }
 
 .navbar {
@@ -41,7 +41,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-content: center;
-    z-index: 5;
+    z-index: 10;
 }
 
 .navbar a {
@@ -55,15 +55,13 @@ header {
 #img-div {
     top: 0;
     left: 0;
-    z-index: 2;
     box-shadow: -1px 15px 20px 5px rgba(0,0,0,0.6);
     clip-path: polygon(0 0, 100% 0%, 100% 83%, 0 92%);
 }
 
 #image {
-    position: relative;
-    top: 0;
-    left: 0;
+    display: block;
+    margin: auto;
     width: 100%;
     height: auto;
     image-resolution: 300dpi;
@@ -72,7 +70,6 @@ header {
 #title{
     color: white;
     letter-spacing: 1em;
-    z-index: 3;
 }
 
 .separator {
@@ -88,7 +85,6 @@ header {
     position: absolute;
     top: 10em;
     left: 60%;
-    z-index: 3;
     text-align: center;
 }
 
@@ -98,7 +94,6 @@ header {
     color: white;
     top: 30em;
     left: 5em;
-    z-index: 3;
     font-style: italic;
     border-left: white 5px solid;
     padding: 10px 10px 10px 15px;
@@ -123,14 +118,29 @@ section {
 #tribute-info {
     width: 100%;
     color: white;
-    z-index: 2;
     margin-top: -20em;
     padding-top: 15em;
     background-color: black;
     align-content: center;
-    line-height: 2em;
+    line-height: 2.3em;
 }
 
+#about-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9307073171065301) 22%, rgba(0,0,0,0.8186624991793592) 41%, rgba(0,0,0,0.7794468129048494) 62%, rgba(0,0,0,0.7262255243894433) 83%), url(./img/ironman-1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    clip-path: polygon(0 0, 100% 0%, 100% 83%, 0 92%);
+    margin-top: -5em;
+    padding-top: 8em;
+    padding-bottom: 8em;
+    z-index: 8;
+}
 #about {
     width: 900px;
     display: flex;
@@ -141,7 +151,7 @@ section {
     padding-bottom: 5em;
 }
 
-#story {
+.story {
     width: 900px;
     display: flex;
     flex-direction: column;
@@ -150,6 +160,96 @@ section {
     padding-top: 2em;
 }
 
+.story-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sc-1 {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9307073171065301) 22%, rgba(0,0,0,0.8186624991793592) 41%, rgba(0,0,0,0.7794468129048494) 62%, rgba(0,0,0,0.7262255243894433) 83%), url(./img/ironman-2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    margin-top: -9em;
+    padding-top: 6em;
+    padding-bottom: 6em;
+    z-index: 7;
+    clip-path: polygon(0 0, 100% 0%, 100% 83%, 0 92%);
+}
+
+.sc-2 {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9307073171065301) 22%, rgba(0,0,0,0.8186624991793592) 41%, rgba(0,0,0,0.7794468129048494) 62%, rgba(0,0,0,0.7262255243894433) 83%), url(./img/ironman-3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: -10em;
+    padding-top: 10em;
+    padding-bottom: 6em;
+    z-index: 6;
+    clip-path: polygon(0 0, 100% 0%, 100% 83%, 0 92%);
+}
+
+.sc-3 {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9307073171065301) 22%, rgba(0,0,0,0.8186624991793592) 41%, rgba(0,0,0,0.7794468129048494) 62%, rgba(0,0,0,0.7262255243894433) 83%), url(./img/ironman-4.jpg);    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: -10em;
+    padding-top: 10em;
+    padding-bottom: 8em;
+    z-index: 5;
+    clip-path: polygon(0 0, 100% 0%, 100% 83%, 0 92%);
+}
+
+.sc-4 {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9307073171065301) 22%, rgba(0,0,0,0.8186624991793592) 41%, rgba(0,0,0,0.7794468129048494) 62%, rgba(0,0,0,0.7262255243894433) 83%), url(./img/ironman-5.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    margin-top: -20em;
+    padding-top: 20em;
+    padding-bottom: 8em;
+    z-index: 4;
+    clip-path: polygon(0 0, 100% 0%, 100% 83%, 0 92%);
+}
+
+.sc-5 {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9307073171065301) 22%, rgba(0,0,0,0.8186624991793592) 41%, rgba(0,0,0,0.7794468129048494) 62%, rgba(0,0,0,0.7262255243894433) 83%), url(./img/ironman-6.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    margin-top: -20em;
+    padding-top: 20em;
+    padding-bottom: 8em;
+    z-index: 3;
+    clip-path: polygon(0 0, 100% 0%, 100% 83%, 0 92%);
+}
+
+.sc-6 {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9307073171065301) 22%, rgba(0,0,0,0.8186624991793592) 41%, rgba(0,0,0,0.7794468129048494) 62%, rgba(0,0,0,0.7262255243894433) 83%), url(./img/ironman-7.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: -15em;
+    padding-top: 15em;
+    padding-bottom: 8em;
+    z-index: 2;
+    clip-path: polygon(0 0, 100% 0%, 100% 83%, 0 92%);
+}
+
+.sc-7 {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9307073171065301) 22%, rgba(0,0,0,0.8186624991793592) 41%, rgba(0,0,0,0.7794468129048494) 62%, rgba(0,0,0,0.7262255243894433) 83%), url(./img/ironman-8.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    margin-top: -20em;
+    padding-top: 20em;
+    padding-bottom: 8em;
+    z-index: 1;
+}
 .zoomIn {
     animation-name: zoomIn;
     animation-duration: 2s;
@@ -182,6 +282,7 @@ section {
     text-align: center;
     display: inline-block;
     font-size: 16px;
+    margin-top: 1em;
     margin-bottom: 1em;
     border: 5px white solid;
     transition: all 0.3s;
@@ -217,12 +318,25 @@ footer {
 
 /* mobile styles */
 @media only screen and (max-width: 767px) { 
-    #tribute-info {
-        width: 600px;
+    #header {
+        top: 1.5em;
+        left: 50%;
+        transform: scale(0.5);
     }
+    #char-line {
+        top: 3em;
+        left: 0;
+        transform: scale(0.5);
+        width: 200px;
+    }
+    #tribute-info {
+        padding-top: 22em;
+        width: 100%;
+    }
+    
     #about, 
-    #story {
-        width: 500px;
+    .story {
+        width: 400px;
     }
 }
   

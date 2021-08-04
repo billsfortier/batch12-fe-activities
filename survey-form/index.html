@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/img/favico.ico" type="image/x-icon">
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Manonks | Survey Form</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row"></div>
+        <div class="row">
+            <div class="col-3 d-none d-sm-block d-sm-none d-md-block"></div>
+            <div class="col-6 col-12">
+                <div class="card scroll">
+                    <img src="./assets/img/manonks-bg.jpg" class="card-img">
+                    <div class="card-body">
+                        <!-- Title -->
+                        <h1 id="title" class="display">Customer Satisfaction Survey</h1>
+                        <!-- Description -->
+                        <p id="description" class="lead">Hello! Please take time to fill up the survey. Don't worry, your information will be safe with us! 😉</p>
+                        <form action="" id="survey-form" >
+                            <!-- Name -->
+                            <div class="form-group">
+                                <label for="name" id="name-label"><b>Full Name</b></label>
+                                <input type="text" name="name" id="name" class="form-control" placeholder="Enter your full name" required>
+                            </div>
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label for="email" id="email-label"><b>Email Address</b></label>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="Enter your mailing address" pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" required>
+                            </div>
+                            <!-- Age -->
+                            <div class="form-group">
+                                <label for="number" id="number-label"><b>Age</b></label>
+                                <input type="number" name="number" id="number" class="form-control" placeholder="Enter your age" min="1" max="122"pattern="\d+">
+                            </div>
+                            <!-- Gender -->
+                            <label id="gender" class=""><b>Gender</b></label>
+                            <div class="form-check">
+                                <input type="radio" name="gender" id="male" class="form-check-input" value="Male">
+                                <label for="male">Male</label>                            
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" name="gender" id="female" class="form-check-input" value="Female">
+                                <label for="female">Female</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" name="gender" id="not-say" class="form-check-input" value="Prefer Not to Say">
+                                <label for="not-say">Prefer Not to Say</label>
+                            </div>
+                            <!-- Select -->
+                            <label for="dropdown"><b>How did you hear about us?</b></label>
+                            <select name="" id="dropdown" class="form-select">
+                                <option value="" selected disabled>Please select</option>
+                                <option value="">From a friend</option>
+                                <option value="">Foodpanda</option>
+                                <option value="">Facebook</option>
+                                <option value="">Instagram</option>
+                            </select>
+                            <!-- Experience -->
+                            <div class="from-group">
+                                <label for="" id="exp-label"><b>How would you rate your overall experience?</b></label>
+                                <fieldset>
+                                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Outstanding">5 stars</label>
+                                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Very Good">4 stars</label>
+                                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Good">3 stars</label>
+                                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Poor">2 stars</label>
+                                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Very Poor">1 star</label>
+                                </fieldset>
+                            </div>
+                            <!-- Textarea -->
+                            <div class="form-group">
+                                <label for="text-area" id="textarea-label"><b>How can we serve you better in the future?</b></label>
+                                <textarea name="comment-area" id="text-area" class="form-control" rows="3" placeholder="Tell us what you think! 😁"></textarea>
+                            </div>
+                            <div class="row center">
+        
+                            </div>
+                            <div class="center">
+                                <button type="submit" id="submit" class="btn btn-success btn-lg">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 d-none">
+                
+            </div>
+        </div>
+        <div class="row"></div>
+    </div>
+</body>
+</html>

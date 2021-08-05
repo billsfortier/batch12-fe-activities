@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./assets/img/favico.ico" type="image/x-icon">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/ee19f7e7e4.js" crossorigin="anonymous"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/style.css">
     <title>Manonks | Survey Form</title>
@@ -22,7 +24,7 @@
                         <h1 id="title" class="display">Customer Satisfaction Survey</h1>
                         <!-- Description -->
                         <p id="description" class="lead">Hello! Please take time to fill up the survey. Don't worry, your information will be safe with us! 😉</p>
-                        <form action="" id="survey-form" >
+                        <form action="" method="GET" id="survey-form" >
                             <!-- Name -->
                             <div class="form-group">
                                 <label for="name" id="name-label"><b>Full Name</b></label>
@@ -31,7 +33,7 @@
                             <!-- Email -->
                             <div class="form-group">
                                 <label for="email" id="email-label"><b>Email Address</b></label>
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Enter your mailing address" pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" required>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="Enter your mailing address" required>
                             </div>
                             <!-- Age -->
                             <div class="form-group">
@@ -54,23 +56,80 @@
                             </div>
                             <!-- Select -->
                             <label for="dropdown"><b>How did you hear about us?</b></label>
-                            <select name="" id="dropdown" class="form-select">
-                                <option value="" selected disabled>Please select</option>
-                                <option value="">From a friend</option>
-                                <option value="">Foodpanda</option>
-                                <option value="">Facebook</option>
-                                <option value="">Instagram</option>
+                            <select name="hear" id="dropdown" class="form-select">
+                                <option value="default" selected disabled>Please select</option>
+                                <option value="friend">From a friend</option>
+                                <option value="foodpanda">Foodpanda</option>
+                                <option value="facebook">Facebook</option>
+                                <option value="instagram">Instagram</option>
                             </select>
+                            <!-- Checkbox -->
+                            <label for="" id="check-label"><b>For the following questions, select the foods that you've tried.</b></label>
+                            <!-- Share Meals -->
+                            <label for="share-meals"><b>Share Meals</b></label>
+                            <div class="form-check">
+                                <input type="checkbox" name="sm-cf" id="classic-fillet" class="form-check-input" value="classic-fillet">
+                                <label for="classic-fillet">Classic Fillet</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="sm-sf" id="spicy-fillet" class="form-check-input" value="spicy-fillet">
+                                <label for="spicy-fillet">Spicy Fillet</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="sm-cs" id="chicken-shots" class="form-check-input" value="chicken-shots">
+                                <label for="chicken-shots">Chicken Shots</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="sm-ccs" id="cc-shanghai" class="form-check-input" value="cc-shanghai">
+                                <label for="cc-shanghai">Chicken Cheese Shanghai</label>
+                            </div>
+                            <!-- Rice Bowls -->
+                            <label for=""><b>Rice Bowls</b></label>
+                            <div class="form-check">
+                                <input type="checkbox" name="rb-cfb" id="cf-bowl" class="form-check-input" value="cf-bowl">
+                                <label for="cf-bowl">Classic Fillet Bowl</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="rb-sfb" id="sf-bowl" class="form-check-input" value="sf-bowl">
+                                <label for="sf-bowl">Spicy Fillet Bowl</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="rb-csb" id="cs-bowl" class="form-check-input" value="cs-bowl">
+                                <label for="cs-bowl">Chicken Shots Bowl</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="rb-sb" id="s-bowl" class="form-check-input" value="s-bowl">
+                                <label for="s-bowl">Shanghai Bowl</label>
+                            </div>
+                            <!-- Combo Meals -->
+                            <label for=""><b>Combo Meals</b></label>
+                            <div class="form-check">
+                                <input type="checkbox" name="cm-cfs" id="cf-shanghai" class="form-check-input" value="cf-shanghai">
+                                <label for="cf-shanghai">Classic Fillet & Shanghai</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="cm-sfs" id="sf-shanghai" class="form-check-input" value="sf-shanghai">
+                                <label for="sf-shanghai">3pc Spicy Fillet & Shanghai</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="cm-css" id="cs-shanghai" class="form-check-input" value="cs-shanghai">
+                                <label for="cs-shanghai">Chicken Shots & Shanghai</label>
+                            </div>
                             <!-- Experience -->
-                            <div class="from-group">
+                            <div class="form-group">
                                 <label for="" id="exp-label"><b>How would you rate your overall experience?</b></label>
-                                <fieldset>
-                                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Outstanding">5 stars</label>
-                                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Very Good">4 stars</label>
-                                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Good">3 stars</label>
-                                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Poor">2 stars</label>
-                                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Very Poor">1 star</label>
-                                </fieldset>
+                                <div class="rating">
+                                    <input type="radio" name="rating" id="one" checked/>
+                                    <label for="one"><i class="fa fa-star"></i></label>
+                                    <input type="radio" name="rating" id="two"/>
+                                    <label for="two"><i class="fa fa-star"></i></label>
+                                    <input type="radio" name="rating" id="three"/>
+                                    <label for="three"><i class="fa fa-star"></i></label>
+                                    <input type="radio" name="rating" id="four"/>
+                                    <label for="four"><i class="fa fa-star"></i></label>
+                                    <input type="radio" name="rating" id="five"/>
+                                    <label for="five"><i class="fa fa-star"></i></label>
+                                </div>
                             </div>
                             <!-- Textarea -->
                             <div class="form-group">

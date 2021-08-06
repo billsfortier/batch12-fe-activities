@@ -1,0 +1,111 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url(https://img.glyphs.co/img?src=aHR0cHM6Ly9zMy5tZWRpYWxvb3QuY29tL3Jlc291cmNlcy9TZWFtbGVzc19Xb29kX1RleHR1cmVzX1ZvbF8yXzgwMHg1MTgtMS5qcGc&q=85&enlarge=true&h=800&w=1200);
+}
+
+/* Div Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+}
+
+/* Board */
+.board {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+    height: 100vw;
+    max-width: 600px;
+    max-height: 600px;
+    box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.75);
+}
+
+/* Square */
+.square {
+    width: 12.5%;
+	height: 12.5%;
+	font-size: 6vw;
+	line-height: 12vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Piece color */
+.square:nth-child(n+1):nth-child(-n+16) {
+    color: black;
+    text-shadow: 0px 3px 4px rgba(0,0,0,0.75);
+}
+
+.square:nth-child(n+49):nth-child(-n+64) {
+    color: white;
+    text-shadow: 0px 3px 4px rgba(0,0,0,0.75);
+}
+
+/* Square color */
+.board .square:nth-child(n+1):nth-child(-n+8):nth-child(even),
+.board .square:nth-child(n+9):nth-child(-n+16):nth-child(odd),
+.board .square:nth-child(n+17):nth-child(-n+24):nth-child(even),
+.board .square:nth-child(n+25):nth-child(-n+32):nth-child(odd),
+.board .square:nth-child(n+33):nth-child(-n+40):nth-child(even),
+.board .square:nth-child(n+41):nth-child(-n+48):nth-child(odd),
+.board .square:nth-child(n+49):nth-child(-n+56):nth-child(even),
+.board .square:nth-child(n+57):nth-child(-n+64):nth-child(odd){
+	background-color: #5E3624;
+}
+
+.board .square:nth-child(n+1):nth-child(-n+8):nth-child(odd),
+.board .square:nth-child(n+9):nth-child(-n+16):nth-child(even),
+.board .square:nth-child(n+17):nth-child(-n+24):nth-child(odd),
+.board .square:nth-child(n+25):nth-child(-n+32):nth-child(even),
+.board .square:nth-child(n+33):nth-child(-n+40):nth-child(odd),
+.board .square:nth-child(n+41):nth-child(-n+48):nth-child(even),
+.board .square:nth-child(n+49):nth-child(-n+56):nth-child(odd),
+.board .square:nth-child(n+57):nth-child(-n+64):nth-child(even){
+	background-color: #F3C49A;
+}
+
+/* Breakpoints */
+@media (min-width: 576px) {
+    .square {
+        font-size: 8vw;
+        line-height: 12vw;
+    }
+}
+
+@media (min-width: 768px) {
+    .square {
+        font-size: 6vw;
+        line-height: 12vw;
+    }
+}
+
+@media (min-width: 992px) {
+    .square {
+        font-size: 4vw;
+        line-height: 8vw;
+    }
+}
+  
+@media (min-width: 1200px) {
+    .square {
+        font-size: 3vw;
+        line-height: 5vw;
+    }
+}

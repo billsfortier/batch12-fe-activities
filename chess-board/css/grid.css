@@ -29,6 +29,7 @@ body {
   place-items: center;
   font-size: 3vw;
 }
+
 /* Piece color */
 .square:nth-child(n+1):nth-child(-n+16) {
   color: black;
@@ -61,36 +62,4 @@ background-color: #5E3624;
 .board .square:nth-child(n+49):nth-child(-n+56):nth-child(odd),
 .board .square:nth-child(n+57):nth-child(-n+64):nth-child(even){
 background-color: #F3C49A;
-}
-
-/* Breakpoints */
-@media (min-width: 576px) {
-  .square {
-      font-size: 8vw;
-  }
-}
-
-@media (min-width: 768px) {
-  .square {
-      font-size: 6vw;
-  }
-}
-
-@media (min-width: 992px) {
-  .square {
-      font-size: 4vw;
-  }
-}
-
-@media (min-width: 1200px) {
-  .square {
-      font-size: 3vw;
-      line-height: 5vw;
-  }
-}
-
-@media (min-width: 1300px) {
-  .square {
-      font-size: 2vw;
-  }
 }

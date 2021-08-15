@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You! | Ace Hill</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/ee19f7e7e4.js" crossorigin="anonymous"></script>
+    <!-- JS -->
+    <script defer src="./assets/js/script.js"></script>
+</head>
+<body>
+    <header id="header" class="ty-content">
+        <input type="checkbox" name="" id="check">
+        <div class="logo-container">
+            <a href="./index.html"><img src="./assets/img/acehill-logo.png" alt="Ace Hill Logo" id="header-img"></a>
+            <a href="./index.html" class="brand">Ace Hill</a>
+        </div>
+    </header>
+    <div class="message-container">
+        <div class="message-content">
+            <h1>THANK YOU!</h1>
+            <span>Here is a copy of your response</span>
+            <div class="response-content">
+                <label for="">Full Name: </label>
+                <span id="full-name"></span>
+            </div>
+            <div class="response-content">
+                <label>Email Address: </label>
+                <span id="email"></span>
+            </div>
+            <div class="response-content">
+                <label>Message: </label>
+                <span id="message"></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Thank You
+        var urlStr = window.location.href,
+            url = new URL(urlStr),
+            fullName = url.searchParams.get("name"),
+            email = url.searchParams.get("email"),
+            message = url.searchParams.get("message");
+
+            document.getElementById("full-name").textContent += fullName;
+            document.getElementById("email").textContent += email;
+            document.getElementById("message").textContent += message;
+    </script>
+</body>
+</html>

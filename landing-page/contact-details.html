@@ -24,18 +24,21 @@
     <div class="message-container">
         <div class="message-content">
             <h1>THANK YOU!</h1>
-            <span>Here is a copy of your response</span>
-            <div class="response-content">
-                <label for="">Full Name: </label>
-                <span id="full-name"></span>
-            </div>
-            <div class="response-content">
-                <label>Email Address: </label>
-                <span id="email"></span>
-            </div>
-            <div class="response-content">
-                <label>Message: </label>
-                <span id="message"></span>
+            <span>Our representative will get back to you as soon as possible! 😉</span>
+            <span>This tab will close in <span id="countdown">5</span> seconds</span>
+            <div class="response-container">
+                <div class="response-content ">
+                    <label for="">Full Name: </label>
+                    <span id="full-name"></span>
+                </div>
+                <div class="response-content">
+                    <label>Email Address: </label>
+                    <span id="email"></span>
+                </div>
+                <div class="response-content">
+                    <label>Message: </label>
+                    <span id="message"></span>
+                </div>
             </div>
         </div>
     </div>
@@ -47,10 +50,20 @@
             fullName = url.searchParams.get("name"),
             email = url.searchParams.get("email"),
             message = url.searchParams.get("message");
+        let time = 5;
+        let countdown = document.getElementById('countdown');
+        document.getElementById("full-name").textContent += fullName;
+        document.getElementById("email").textContent += email;
+        document.getElementById("message").textContent += message;
 
-            document.getElementById("full-name").textContent += fullName;
-            document.getElementById("email").textContent += email;
-            document.getElementById("message").textContent += message;
+        function closeTab() {
+            let seconds = time % 60;
+            countdown.innerHTML = seconds;
+            time--;
+            window.setTimeout("close()", 5000);
+        }
+        setInterval(closeTab, 1000);
+        window.closeTab();
     </script>
 </body>
 </html>

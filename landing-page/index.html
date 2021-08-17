@@ -175,7 +175,7 @@
                 </div>
             </div>
             <div class="contact-form">
-                <form action="./contact-details.html" method="GET" id="form" target="_blank" autocomplete="off">
+                <form action="./contact-details.html" method="GET" name="contact-form" id="form" target="_blank" autocomplete="off">
                     <h3>Contact Us</h3>
                     <div class="input-container">
                         <input type="text" name="name" class="input" id="name" required>
@@ -193,7 +193,7 @@
                         <span>Message</span>
                     </div>
                     <div class="button">
-                        <input type="submit" value="Send" id="submit">
+                        <input type="button" onclick="resetForm()" value="Send" id="btnsubmit">
                     </div>
                 </form>
             </div>

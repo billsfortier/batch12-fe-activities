@@ -1,6 +1,6 @@
 window.addEventListener("scroll", function () {
-    var header = document.querySelector("header");
-    header.classList.toggle("scrolled", window.scrollY > 0);
+  var header = document.querySelector("header");
+  header.classList.toggle("scrolled", window.scrollY > 0);
 });
 
 var vodka = document.querySelector('#vodka-sodas');
@@ -18,7 +18,7 @@ document.querySelector('#story-link').addEventListener("click", toggleNav);
 document.querySelector('#contact-link').addEventListener("click", toggleNav);
 
 function toggleNav() {
-    check.checked = false;
+  check.checked = false;
 }
 
 function toggleVodka() {
@@ -58,3 +58,10 @@ inputs.forEach((input) => {
   input.addEventListener("blur", blurFunc);
 });
 
+function resetForm() {
+  var frm = document.getElementsByName('contact-form')[0];
+  frm.submit();
+  frm.reset();
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}

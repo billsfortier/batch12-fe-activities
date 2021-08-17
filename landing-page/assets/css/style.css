@@ -568,7 +568,7 @@ textarea.input {
     align-items: center;
 }
 
-#submit {
+#btnsubmit {
     padding: 0.6rem 1.3rem;
     background: none;
     border: 2px solid rgba(255, 255, 255, 0.2);
@@ -582,7 +582,7 @@ textarea.input {
     margin: 0;
 }
   
-#submit:hover {
+#btnsubmit:hover {
     background: rgba(255, 255, 255, 0.8);
     color: #000;
 }
@@ -616,21 +616,28 @@ textarea.input {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(15px);
     border-radius: 10px;
+    margin: 2rem;
+    z-index: 10;
 }
 .message-content h1,
 .message-content span{
     color: #fff;
 }
 
+.response-container {
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 2rem;
+}
+
 .response-content {
     display: flex;
     flex-wrap: wrap;
     text-align: left;
-    border: 2px solid rgba(255, 255, 255, 0.2);
     background: none;
     color: #fff;
     padding: 0.6rem 1.2rem;
-    margin-top: 1rem;
     font-weight: 500;
     font-size: 0.95rem;
     letter-spacing: 0.5px;

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://kit.fontawesome.com/ee19f7e7e4.js" crossorigin="anonymous"></script>
+    <title>Momentum App</title>
+</head>
+<body>
+    <main class="container">
+        <div class="top-content">
+            <div id="reset-page">
+                <span id="reset"><i class="fas fa-redo fa-2x"></i></span>
+            </div>
+        </div>
+        <div class="middle-content">
+            <!-- ✅ User Story #1: As a user, I want to put my name on the homepage. -->
+            <div id="get-name-wrapper">
+                <form action="" id="get-name" autocomplete="off">
+                    <h1 class="display-3">Hello, what's your name?</h1>
+                    <input type="text" name="" id="name-input" required>
+                    <input type="submit" value="">
+                </form>
+            </div>
+            <!-- ✅ User Story #2: As a user, I want to see the current time on the homepage. -->
+            <div id="time-wrapper">
+                <h1 class="display-1" id="current-time"></h1>
+            </div>
+            <!-- ✅ User Story #3: As a user, I want to see a greeting with my inputted name on the homepage. -->
+            <div id="greeting-wrapper">
+                <h1 class="display-2" id="greeting"></h1>
+            </div>
+            <!-- ✅ User Story #4: As a user, I want to add my main focus for today on the homepage and display it also on the same page. -->
+            <div id="focus-wrapper">
+                <form action="" id="focus-form" autocomplete="off">
+                    <h2 class="display-3">What is your main focus for today?</h2>
+                    <input type="text" name="" id="main-focus" required>
+                    <input type="submit" value="">
+                </form>
+                <div id="today-focus-wrapper">
+                    <h1 class="display-4">TODAY</h1>
+                    <span id="today-focus"></span>
+                    <span id="modify-focus"><i class="far fa-edit"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-content">
+            <!-- ✅ User Story #5: As a user, I want to see a random quote on the homepage. -->
+            <div id="quote-wrapper">
+                <div id="quote-content">
+                    <span id="quote"></span>
+                </div>
+                <!-- ✅ User Story #7: As a user, I want to add a new quote for my momentum app. -->
+                <div id="quote-options">
+                    <span id="generate-quote">GENERATE</span>
+                    <hr>
+                    <span id="add-quote">ADD</span>
+                </div>
+            </div>
+            <!-- ✅ User Story #6: As a user, I want to add a todo list on the homepage and is able to see the list on the same page. -->
+            <div id="todo-toggle">
+                <span class="todo-text">Todo</span>
+            </div>
+            <div id="todo-wrapper">
+                <span class="display-4">Todo</span>
+                <form id="todo-form" autocomplete="off">
+                    <input type="text" autofocus placeholder="What do you want to get done?" class="todo-input">
+                </form>
+                <ul class="todo-list js-todo-list"></ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="./js/app.js"></script>
+</body>
+</html>

@@ -132,7 +132,7 @@ let setMainFocus = (e) => {
     let storagedata = JSON.parse(localStorage.getItem('data'))
     getFocus = inputFocus.value;
     let data = {
-        name: getUserName,
+        name: storagedata.name,
         focus: getFocus
     }
     localStorage.setItem("data", JSON.stringify(data))
@@ -209,7 +209,6 @@ setDefault()
 // Todo Toggle ✅
 const openTodo = () => {
     todoWrapper.style.display == 'flex' ? todoWrapper.style.display = 'none' : todoWrapper.style.display = 'flex';
-    todoWrapper.style.right = '1vw';
 }
 todoToggle.addEventListener('click', openTodo);
 

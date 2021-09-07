@@ -52,6 +52,10 @@ function startGame() {
     })
     setHoverOnBoard()
     winningMessageElement.classList.remove('show')
+    // Uncheck radio button
+    playerTurn.forEach(radio => {
+        radio.checked = false
+    })
 }
 
 // Click cell once, will not be clickable when already clicked

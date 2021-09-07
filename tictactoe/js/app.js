@@ -12,7 +12,7 @@ const WINNING_COMBINATIONS = [
     [2, 4, 6],
 ]
 let storeMovement = [] // store movement here
-let movePosition = 0
+let movePosition = 0 // movement counter, should be equal to storageMovement.length for next and prev move fn
 
 const startGameElement = document.querySelector('.start-game-wrapper')// start game wrapper
 const cellElements = document.querySelectorAll('[data-cell]')// select cell element
@@ -37,7 +37,9 @@ function chooseTurn() {
 // startButton eventListener
 startButton.addEventListener('click', startGame)
 // restartButon eventListener
-restartButton.addEventListener('click', startGame)
+restartButton.addEventListener('click', () => {
+    location.reload()
+})
 
 function startGame() {
     startGameElement.style.display = 'flex'

@@ -18,18 +18,72 @@ body {
     margin: 0;
     padding: 0;
 }
+
+input[type=radio] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
 /* Classes */
 .start-game-wrapper {
-    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .7);
+    z-index: 5;
+}
+
+.start-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.choose-turn .turn,
+.choose-turn label {
+    font-size: 2rem;
 }
 
 .choose-turn .turn-input {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+
+.choose-turn .turn-x,
+.choose-turn .turn-o {
+    display: flex;
+    align-items: center;
+}
+
+button#start {
+    font-size: 1.5rem;
+    background: #fff;
+    border: 1px solid #000;
+    margin-top: 20px;
+    padding: .20em .5em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+button#start:hover {
+    transform: scale(0.9);
+}
+
+button#start:active {
+    transform: scale(0.8);
 }
 
 .board {

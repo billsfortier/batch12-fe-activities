@@ -14,6 +14,7 @@ const WINNING_COMBINATIONS = [
 let storeMovement = [] // store movement here
 let movePosition = 0
 
+const startGameElement = document.querySelector('.start-game-wrapper')// start game wrapper
 const cellElements = document.querySelectorAll('[data-cell]')// select cell element
 const board = document.getElementById('board')//board div
 const playerTurn = document.getElementsByName('choose-turn')// radio button
@@ -32,7 +33,6 @@ function chooseTurn() {
     })
 }
 // Call Start Game Fn
-startGame()
 
 // startButton eventListener
 startButton.addEventListener('click', startGame)
@@ -40,9 +40,10 @@ startButton.addEventListener('click', startGame)
 restartButton.addEventListener('click', startGame)
 
 function startGame() {
+    startGameElement.style.display = 'flex'
     // Need to choose who will play first (fn)
     chooseTurn()
-    // oTurn = true
+    startGameElement.style.display = 'none'
     cellElements.forEach(cell => {
         cell.classList.remove(X_CLASS)
         cell.classList.remove(O_CLASS)
@@ -56,6 +57,10 @@ function startGame() {
     playerTurn.forEach(radio => {
         radio.checked = false
     })
+    // Empty storage array
+    storeMovement = []
+    // rest move position count
+    movePosition = 0
 }
 
 // Click cell once, will not be clickable when already clicked
@@ -147,4 +152,13 @@ function checkWinner(currentClass) {
             return cellElements[index].classList.contains(currentClass)
         })
     })
+}
+
+// Previous Move
+function previousMove() {
+    
+}
+// Next Move
+function nextMove() {
+    
 }

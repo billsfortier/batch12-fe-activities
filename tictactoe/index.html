@@ -5,36 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="https://kit.fontawesome.com/ee19f7e7e4.js" crossorigin="anonymous"></script>
     <title>Tictactoe</title>
 </head>
 <body>
     <div class="start-game-wrapper">
-        <!-- <div class="choose-player">
-            <div class="player">
-                <span>CHOOSE PLAYER</span>
-            </div>
-            <input type="radio" name="choose-player" id="player-one">
-            <label for="player-one">P1</label>
-            <input type="radio" name="choose-player" id="player-two">
-            <label for="player-two">P2</label>
-        </div> -->
-        <div class="choose-turn">
-            <div class="turn">
-                <span>CHOOSE TURN</span>
-            </div>
-            <div class="turn-input">
-                <div class="turn-x">
-                    <input type="radio" name="choose-turn" value="x" id="x-turn">
-                    <label for="x-turn">X</label>
+        <div class="start-container">
+            <div class="choose-turn">
+                <div class="turn">
+                    <span>CHOOSE TURN</span>
                 </div>
-                <div class="turn-o">
-                    <input type="radio" name="choose-turn" value="o" id="o-turn">
-                    <label for="o-turn">O</label>
+                <div class="turn-input">
+                    <div class="turn-x">
+                        <input type="radio" name="choose-turn" value="x" id="x-turn">
+                        <label for="x-turn" class="x">X</label>
+                    </div>
+                    <div class="turn-o">
+                        <input type="radio" name="choose-turn" value="o" id="o-turn">
+                        <label for="o-turn" class="o">O</label>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="start-game">
-            <button id="start">Start</button>
+            <div class="start-game">
+                <button id="start">Start</button>
+            </div>
         </div>
     </div>
     <div class="board" id="board">

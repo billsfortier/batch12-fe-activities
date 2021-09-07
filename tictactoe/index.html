@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="start-game-wrapper">
-        <div class="choose-player">
+        <!-- <div class="choose-player">
             <div class="player">
                 <span>CHOOSE PLAYER</span>
             </div>
@@ -17,17 +17,25 @@
             <label for="player-one">P1</label>
             <input type="radio" name="choose-player" id="player-two">
             <label for="player-two">P2</label>
-        </div>
+        </div> -->
         <div class="choose-turn">
             <div class="turn">
                 <span>CHOOSE TURN</span>
             </div>
-            <input type="radio" name="choose-turn" id="x-turn">
-            <label for="x-turn">X</label>
-            <input type="radio" name="choose-turn" id="o-turn">
-            <label for="o-turn">O</label>
+            <div class="turn-input">
+                <div class="turn-x">
+                    <input type="radio" name="choose-turn" value="x" id="x-turn">
+                    <label for="x-turn">X</label>
+                </div>
+                <div class="turn-o">
+                    <input type="radio" name="choose-turn" value="o" id="o-turn">
+                    <label for="o-turn">O</label>
+                </div>
+            </div>
         </div>
-        <div class="start-game"></div>
+        <div class="start-game">
+            <button id="start">Start</button>
+        </div>
     </div>
     <div class="board" id="board">
         <div class="cell" data-cell></div>

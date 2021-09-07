@@ -11,29 +11,44 @@ const WINNING_COMBINATIONS = [
     [0, 4, 8],
     [2, 4, 6],
 ]
-//Select cell element 
-const cellElements = document.querySelectorAll('[data-cell]')
-const board = document.getElementById('board')
-const winningMessageElement = document.querySelector('.modal')
-const restartButton = document.getElementById('restart-button')
-const winningMessage = document.querySelector('[data-winning-message]')
-let oTurn
+let storeMovement = [] // store movement here
+let movePosition = 0
 
+const cellElements = document.querySelectorAll('[data-cell]')// select cell element
+const board = document.getElementById('board')//board div
+const playerTurn = document.getElementsByName('choose-turn')// radio button
+const winningMessageElement = document.querySelector('.modal')// winning message element
+const winningMessage = document.querySelector('[data-winning-message]')// winning message
+const startButton = document.getElementById('start')// start button
+const restartButton = document.getElementById('restart-button')// restart button
+let oTurn // circle turn
 
+// Choose Player Fn
+function chooseTurn() {
+    playerTurn.forEach(radio => {
+        if (radio.checked) {
+            radio.value === X_CLASS ? oTurn = false : oTurn = true
+        }
+    })
+}
 // Call Start Game Fn
 startGame()
 
+// startButton eventListener
+startButton.addEventListener('click', startGame)
 // restartButon eventListener
 restartButton.addEventListener('click', startGame)
 
 function startGame() {
     // Need to choose who will play first (fn)
+    chooseTurn()
     // oTurn = true
     cellElements.forEach(cell => {
         cell.classList.remove(X_CLASS)
         cell.classList.remove(O_CLASS)
         cell.removeEventListener('click', handleClick)
         cell.addEventListener('click', handleClick, { once: true})
+        cell.innerText = ''
     })
     setHoverOnBoard()
     winningMessageElement.classList.remove('show')
@@ -42,7 +57,15 @@ function startGame() {
 // Click cell once, will not be clickable when already clicked
 function handleClick(e) {
     const cell = e.target
-    const currentClass = oTurn ? O_CLASS : X_CLASS
+    let currentClass
+    
+    if (oTurn) {
+        currentClass = O_CLASS
+        this.innerText = O_CLASS
+    } else {
+        currentClass = X_CLASS
+        this.innerText = X_CLASS
+    }
     // Place Mark
     placeMark(cell, currentClass)
     // Check Win
@@ -56,7 +79,29 @@ function handleClick(e) {
         swapTurns()
         setHoverOnBoard()
     }
-    
+}
+
+// Store Move Fn
+function storeMove(currentClass) {
+    // check if cell has className 'x' || 'o'
+    // store it in the 2D array
+    let array1 = []
+    let array2 = []
+    let array3 = []
+    let mark = ''
+
+    cellElements.forEach((cell, index = 3) => {
+        if (index < 3) {
+            array1.push(cell.innerText)
+        } else if (index >= 3 && index <= 5) {
+            array2.push(cell.innerText)
+        } else {
+            array3.push(cell.innerText)
+        }
+    })
+    // console.log({array1,array2,array3})
+    storeMovement.push([array1, array2, array3])
+    console.log(storeMovement)
 }
 // Check If Game Is Draw
 function endGame(draw) {
@@ -76,9 +121,10 @@ function isDraw() {
         return cell.classList.contains(X_CLASS) || cell.classList.contains(O_CLASS)
     })
 }
-
+// Place Mark Fn
 function placeMark(cell, currentClass) {
     cell.classList.add(currentClass)
+    storeMove(currentClass)
 }
 // Swap Turns
 function swapTurns() {

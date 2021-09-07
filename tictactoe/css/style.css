@@ -21,6 +21,15 @@ body {
 /* Classes */
 .start-game-wrapper {
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.choose-turn .turn-input {
+    display: flex;
+    justify-content: space-between;
 }
 
 .board {

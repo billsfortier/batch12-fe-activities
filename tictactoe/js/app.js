@@ -12,40 +12,43 @@ const WINNING_COMBINATIONS = [
     [2, 4, 6],
 ]
 let storeMovement = [] // store movement here
+let movementHistory = [] // store move history
 let movePosition = 0 // movement counter, should be equal to storageMovement.length for next and prev move fn
 
 const startGameElement = document.querySelector('.start-game-wrapper')// start game wrapper
 const cellElements = document.querySelectorAll('[data-cell]')// select cell element
 const board = document.getElementById('board')//board div
-const playerTurn = document.getElementsByName('choose-turn')// radio button
+const xButton = document.getElementById('x-turn') // X Button
+const oButton = document.getElementById('o-turn')// O Button
 const winningMessageElement = document.querySelector('.modal')// winning message element
 const winningMessage = document.querySelector('[data-winning-message]')// winning message
+const actionElement = document.querySelector('.action-buttons') // action buttons div
 const startButton = document.getElementById('start')// start button
+const previousButton = document.getElementById('previous-button') // previous button
+const nextButton = document.getElementById('next-button') // next button
 const restartButton = document.getElementById('reset-button')// restart button
 let oTurn // circle turn
 
 // Choose Player Fn
-function chooseTurn() {
-    playerTurn.forEach(radio => {
-        if (radio.checked) {
-            radio.value === X_CLASS ? oTurn = false : oTurn = true
-        }
-    })
+function playerX() {
+    oTurn = false
+    startGameElement.classList.add('hide')
+    startGame()
 }
-// Call Start Game Fn
 
-// startButton eventListener
-startButton.addEventListener('click', startGame)
+function playerY() {
+    oTurn = true
+    startGameElement.classList.add('hide')
+    startGame()
+}
+xButton.addEventListener('click', playerX)
+oButton.addEventListener('click', playerY)
 // restartButon eventListener
 restartButton.addEventListener('click', () => {
     location.reload()
 })
 
 function startGame() {
-    startGameElement.style.display = 'flex'
-    // Need to choose who will play first (fn)
-    chooseTurn()
-    startGameElement.style.display = 'none'
     cellElements.forEach(cell => {
         cell.classList.remove(X_CLASS)
         cell.classList.remove(O_CLASS)
@@ -55,10 +58,7 @@ function startGame() {
     })
     setHoverOnBoard()
     winningMessageElement.classList.remove('show')
-    // Uncheck radio button
-    playerTurn.forEach(radio => {
-        radio.checked = false
-    })
+    actionElement.classList.remove('show')
     // Empty storage array
     storeMovement = []
     // rest move position count
@@ -121,9 +121,11 @@ function endGame(draw) {
         winningMessage.innerText = `${oTurn ? "O" : "X"} Wins!`
     }
     winningMessageElement.classList.add('show')
+
     setTimeout(() => {
         winningMessageElement.classList.remove('show')
-    }, 3000);
+        actionElement.classList.add('show')
+    }, 1500);
 }
 // If Game is Draw
 function isDraw() {
@@ -157,24 +159,39 @@ function checkWinner(currentClass) {
     })
 }
 // Load Cells Fn
-function loadCells(movePosition) {
-    // Set cells innerText to ''
-    cellElements.forEach(cell => {
-        cell.innerText = ''
+function loadCells() {
+    let moves = []
+    movementHistory = storeMovement[movePosition - 1]
+    movementHistory.forEach(row => {
+        row.forEach(move => {
+            moves.push(move)
+        })
     })
 
+    cellElements.forEach((cell, index) => {
+        cell.innerText = moves[index]
+    })
 }
 // Previous Move
 function previousMove() {
+    movePosition--
     if (movePosition > 0) {
-        movePosition--
-        loadCells(movePosition)
+        if (movePosition === 1) {
+            previousButton.disabled = true
+        }
+        nextButton.disabled = false
+        loadCells()
     }
+    
 }
 // Next Move
 function nextMove() {
-    if (movePosition >= 0 && movePosition < storeMovement.length - 1) {
-        movePosition++
-        loadCells(movePosition)
+    previousButton.disabled = true
+    if (movePosition < storeMovement.length - 1 && movePosition !== storeMovement.length - 1) {
+        const move = storeMovement[++movePosition]
+        loadCells(move)
+    }
+    if (movePosition === storeMovement.length - 1){
+        nextButton.disabled = true
     }
 }

@@ -42,6 +42,9 @@ input[type=radio] {
     z-index: 5;
 }
 
+.start-game-wrapper.hide {
+    display: none;
+}
 .start-container {
     display: flex;
     flex-direction: column;
@@ -53,21 +56,36 @@ input[type=radio] {
     max-width: 400px;
 }
 
-.choose-turn .turn,
-.choose-turn label {
+.choose-turn .turn {
     font-size: 2rem;
 }
 
 .choose-turn .turn-input {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin-top: 10px;
 }
 
-.choose-turn .turn-x,
-.choose-turn .turn-o {
-    display: flex;
-    align-items: center;
+.turn-input button {
+    width: 100px;
+    height: 100px;
+    border: none;
+    border-radius: 10px;
+    font-size: 3em;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.turn-input button:hover {
+    transform: scale(0.9);
+}
+
+button#x-turn {
+    background-color: #62D1E3;
+}
+
+button#o-turn {
+    background-color: #ff6961;
 }
 
 button#start {
@@ -181,14 +199,33 @@ button#start:active {
 .action-buttons {
     position: absolute;
     bottom: 18vh;
-    display: flex;
+    display: none;
     justify-content: space-between;
     width: 100%;
     max-width: 300px;
 }
 
+.action-buttons.show {
+    display: flex;
+}
+
 .action-buttons button {
-    font-size: 1.5em;
+    font-size: 3em;
+    border: none;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+.action-buttons #previous-button:hover{
+    transform: rotate(-30deg);
+}
+
+.action-buttons #reset-button:hover{
+    transform: rotate(180deg);
+}
+
+.action-buttons #next-button:hover{
+    transform: rotate(30deg);
 }
 /* Modal */
 .modal {

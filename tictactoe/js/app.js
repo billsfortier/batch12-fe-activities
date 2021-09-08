@@ -99,7 +99,6 @@ function storeMove(currentClass) {
     let array1 = []
     let array2 = []
     let array3 = []
-    let mark = ''
 
     cellElements.forEach((cell, index = 3) => {
         if (index < 3) {
@@ -110,7 +109,6 @@ function storeMove(currentClass) {
             array3.push(cell.innerText)
         }
     })
-    // console.log({array1,array2,array3})
     storeMovement.push([array1, array2, array3])
     console.log(storeMovement)
 }
@@ -155,12 +153,25 @@ function checkWinner(currentClass) {
         })
     })
 }
+// Load Cells Fn
+function loadCells(movePosition) {
+    // Set cells innerText to ''
+    cellElements.forEach(cell => {
+        cell.innerText = ''
+    })
 
+}
 // Previous Move
 function previousMove() {
-    
+    if (movePosition > 0) {
+        movePosition--
+        loadCells(movePosition)
+    }
 }
 // Next Move
 function nextMove() {
-    
+    if (movePosition >= 0 && movePosition < storeMovement.length - 1) {
+        movePosition++
+        loadCells(movePosition)
+    }
 }

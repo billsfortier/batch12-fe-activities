@@ -17,6 +17,9 @@ html {
 body {
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+
 }
 
 input[type=radio] {
@@ -99,7 +102,7 @@ button#start:active {
 /* Board Hover fx */
 .board.x .cell:not(.x):not(.o):hover:before,
 .board.x .cell:not(.x):not(.o):hover::after {
-    background: #b8b8b8 !important;
+    background: #CBF0F6 !important;
 }
 
 .board.o .cell:not(.x):not(.o):hover:before {
@@ -113,32 +116,14 @@ button#start:active {
 .cell {
     width: var(--cell-size);
     height: var(--cell-size);
-    border: 1px solid #000;
+    border-radius: 10px;
+    background: #F6F7FF;
+    margin: 5px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-}
-/* Remove outside borders */
-.cell:first-child,
-.cell:nth-child(2),
-.cell:nth-child(3) {
-    border-top: none;
-}
-
-.cell:nth-child(3n + 1) {
-    border-left: none;
-}
-
-.cell:nth-child(3n + 3) {
-    border-right: none;
-}
-
-.cell:last-child,
-.cell:nth-child(8),
-.cell:nth-child(7) {
-    border-bottom: none;
 }
 /* X Styling */
 .cell.x::before,
@@ -151,7 +136,7 @@ button#start:active {
     content: '';
     width: calc(var(--mark-size) * .15);
     height: var(--mark-size);
-    background: #000;
+    background: #62D1E3;
     border-radius: 10px;
 }
 
@@ -185,12 +170,25 @@ button#start:active {
 .board.o .cell:not(.x):not(.o):hover::after {
     width: calc(var(--mark-size) * .5);
     height: calc(var(--mark-size) * .5);
-    background: #fff;
+    background: #F6F7FF;
 }
 /* Set cursor: not-allowed when .cell hasClass(x || o) */
 .cell.x,
 .cell.o {
     cursor: not-allowed;
+}
+/* Action Buttons */
+.action-buttons {
+    position: absolute;
+    bottom: 18vh;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 300px;
+}
+
+.action-buttons button {
+    font-size: 1.5em;
 }
 /* Modal */
 .modal {

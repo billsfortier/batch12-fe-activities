@@ -21,7 +21,7 @@ const playerTurn = document.getElementsByName('choose-turn')// radio button
 const winningMessageElement = document.querySelector('.modal')// winning message element
 const winningMessage = document.querySelector('[data-winning-message]')// winning message
 const startButton = document.getElementById('start')// start button
-const restartButton = document.getElementById('restart-button')// restart button
+const restartButton = document.getElementById('reset-button')// restart button
 let oTurn // circle turn
 
 // Choose Player Fn
@@ -121,6 +121,9 @@ function endGame(draw) {
         winningMessage.innerText = `${oTurn ? "O" : "X"} Wins!`
     }
     winningMessageElement.classList.add('show')
+    setTimeout(() => {
+        winningMessageElement.classList.remove('show')
+    }, 3000);
 }
 // If Game is Draw
 function isDraw() {

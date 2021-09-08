@@ -112,7 +112,6 @@ function checkWinner() {
 function endGame() {
     announceElement.innerText = draw ? `Draw!` : `${currentTurn} wins!`
     toggleClick(false)
-    highlightWinCombination('show')
     actionElement.classList.add('show')
 }
 // toggleClick Fn 
@@ -125,20 +124,9 @@ function toggleClick(event) {
                           cell.removeEventListener('click', handleClick))
     })
 }
-// highlight winning combination
-function highlightWinCombination(event) {
-    cellElements.forEach((cell, index) => {
-        winIndex.forEach( move => {
-            if (index === move) {
-                event === 'show' ? cell.classList.add('highlight-box') : cell.classList.remove('highlight-box')
-            }
-        })
-    })
-}
 // Action Button Fn
 // previousMove
 function previousMove() {
-    highlightWinCombination('hide')
     movementCount--
     if (movementCount > 0 ) {
         if (movementCount === 1) {

@@ -11,96 +11,72 @@ const WINNING_COMBINATIONS = [
     [0, 4, 8],
     [2, 4, 6],
 ]
-let storeMovement = [] // store movement here
-let movementHistory = [] // store move history
-let movePosition = 0 // movement counter, should be equal to storageMovement.length for next and prev move fn
 
+let playerOne
+let playerTwo
+let currentTurn
+let movementCount = 0
+let draw = false
+let winIndex = []
+let gameState = []
+let movementHistory = []
+
+// DOM
 const startGameElement = document.querySelector('.start-game-wrapper')// start game wrapper
+const playerButton = document.querySelectorAll('.player-button')
+const board = document.querySelector('.board')
 const cellElements = document.querySelectorAll('[data-cell]')// select cell element
-const board = document.getElementById('board')//board div
-const xButton = document.getElementById('x-turn') // X Button
-const oButton = document.getElementById('o-turn')// O Button
-const winningMessageElement = document.querySelector('.modal')// winning message element
-const winningMessage = document.querySelector('[data-winning-message]')// winning message
 const actionElement = document.querySelector('.action-buttons') // action buttons div
-const startButton = document.getElementById('start')// start button
 const previousButton = document.getElementById('previous-button') // previous button
 const nextButton = document.getElementById('next-button') // next button
-const restartButton = document.getElementById('reset-button')// restart button
-let oTurn // circle turn
+const resetButton = document.getElementById('reset-button')// restart button
+const announceElement = document.querySelector('#announce')// announce winner
 
-// Choose Player Fn
-function playerX() {
-    oTurn = false
-    startGameElement.classList.add('hide')
-    startGame()
-}
-
-function playerY() {
-    oTurn = true
-    startGameElement.classList.add('hide')
-    startGame()
-}
-xButton.addEventListener('click', playerX)
-oButton.addEventListener('click', playerY)
-// restartButon eventListener
-restartButton.addEventListener('click', () => {
-    location.reload()
-})
-
+// Fn
+// initiate Game
+startGame()
+// StartGame Fn
 function startGame() {
-    cellElements.forEach(cell => {
-        cell.classList.remove(X_CLASS)
-        cell.classList.remove(O_CLASS)
-        cell.removeEventListener('click', handleClick)
-        cell.addEventListener('click', handleClick, { once: true})
-        cell.innerText = ''
+    playerButton.forEach(button => {
+        button.addEventListener('click', () => {
+            startGameElement.classList.add('hide')
+            setFirstTurn(button)
+            toggleClick(true)
+        })
     })
-    setHoverOnBoard()
-    winningMessageElement.classList.remove('show')
-    actionElement.classList.remove('show')
-    // Empty storage array
-    storeMovement = []
-    // rest move position count
-    movePosition = 0
 }
-
-// Click cell once, will not be clickable when already clicked
-function handleClick(e) {
-    const cell = e.target
-    let currentClass
-    
-    if (oTurn) {
-        currentClass = O_CLASS
-        this.innerText = O_CLASS
-    } else {
-        currentClass = X_CLASS
-        this.innerText = X_CLASS
-    }
-    // Place Mark
-    placeMark(cell, currentClass)
-    // Check Win
-    if (checkWinner(currentClass)) {
-        endGame(false)
-    } else if (isDraw()) {
-        // Check Draw
-        endGame(true)
-    } else {
-        // Switch Turn
-        swapTurns()
-        setHoverOnBoard()
+// Choose First Turn
+function setFirstTurn(button) {
+    playerOne = button.innerHTML // X
+    playerTwo = playerOne === 'X' ? 'O' : 'X'
+    console.log(playerOne == X_CLASS);
+}
+// Check if cell is empty
+function handleClick() {
+    if (!(this.innerHTML === 'X' || this.innerHTML === 'O')) {
+        this.innerHTML = movementCount % 2 === 0 ? playerOne : playerTwo;
+        console.log(playerOne , playerTwo);
+        if ((movementCount % 2 === 0 && playerOne === 'X') || (movementCount % 2 !== 0 && playerTwo === 'X')) {
+            this.classList.add(X_CLASS)
+        } else {
+            this.classList.add(O_CLASS)
+        }
+        storeMove()
+        checkWinner()
+        movementCount++;
+        if (movementCount === 9) {
+            announceElement.innerHTML = 'Draw!'
+            actionElement.classList.add('show')
+        }
     }
 }
-
-// Store Move Fn
-function storeMove(currentClass) {
-    // check if cell has className 'x' || 'o'
-    // store it in the 2D array
+// Store Move
+function storeMove() {
     let array1 = []
     let array2 = []
     let array3 = []
 
-    cellElements.forEach((cell, index = 3) => {
+    cellElements.forEach((cell, index) => {
         if (index < 3) {
             array1.push(cell.innerText)
         } else if (index >= 3 && index <= 5) {
@@ -109,89 +85,120 @@ function storeMove(currentClass) {
             array3.push(cell.innerText)
         }
     })
-    storeMovement.push([array1, array2, array3])
-    console.log(storeMovement)
-}
-// Check If Game Is Draw
-function endGame(draw) {
-    if (draw) {
-        winningMessage.innerText = 'Draw!'
-    } else {
-        // Condition if Not Draw
-        winningMessage.innerText = `${oTurn ? "O" : "X"} Wins!`
-    }
-    winningMessageElement.classList.add('show')
-
-    setTimeout(() => {
-        winningMessageElement.classList.remove('show')
-        actionElement.classList.add('show')
-    }, 1500);
-}
-// If Game is Draw
-function isDraw() {
-    // Destructure cellElements into an array [...cellElements] 
-    // Because cellElements does not have 'every()' method
-    return [...cellElements].every(cell => {
-        return cell.classList.contains(X_CLASS) || cell.classList.contains(O_CLASS)
-    })
-}
-// Place Mark Fn
-function placeMark(cell, currentClass) {
-    cell.classList.add(currentClass)
-    storeMove(currentClass)
-}
-// Swap Turns
-function swapTurns() {
-    oTurn = !oTurn
-}
-// Hover Effect on Board
-function setHoverOnBoard() {
-    board.classList.remove(X_CLASS)
-    board.classList.remove(O_CLASS)
-    oTurn ? board.classList.add(O_CLASS) : board.classList.add(X_CLASS)
+    // Push to gameState array (for history)
+    gameState.push([array1, array2, array3])
+    console.log(gameState);
 }
 // Check Winner
-function checkWinner(currentClass) {
-    return WINNING_COMBINATIONS.some(combination => {
-        return combination.every(index => {
-            return cellElements[index].classList.contains(currentClass)
-        })
-    })
-}
-// Load Cells Fn
-function loadCells() {
-    let moves = []
-    movementHistory = storeMovement[movePosition - 1]
-    movementHistory.forEach(row => {
-        row.forEach(move => {
-            moves.push(move)
-        })
-    })
-
-    cellElements.forEach((cell, index) => {
-        cell.innerText = moves[index]
-    })
-}
-// Previous Move
-function previousMove() {
-    movePosition--
-    if (movePosition > 0) {
-        if (movePosition === 1) {
-            previousButton.disabled = true
+function checkWinner() {
+    currentTurn = movementCount % 2 === 0 ? playerOne : playerTwo
+    
+    for(let i = 0; i < cellElements.length; i++) {
+        for(let j = 0; j < WINNING_COMBINATIONS.length; j++) {
+            let cell1 = cellElements[WINNING_COMBINATIONS[j][0]].innerText
+            let cell2 = cellElements[WINNING_COMBINATIONS[j][1]].innerText
+            let cell3 = cellElements[WINNING_COMBINATIONS[j][2]].innerText
+            
+            if (cell1 === currentTurn && cell2 === currentTurn && cell3 === currentTurn) {
+                winIndex = [WINNING_COMBINATIONS[j][0], WINNING_COMBINATIONS[j][1], WINNING_COMBINATIONS[j][2]]
+                console.log(winIndex);
+                return endGame()
+            }
         }
-        nextButton.disabled = false
-        loadCells()
     }
     
 }
-// Next Move
-function nextMove() {
-    previousButton.disabled = true
-    if (movePosition < storeMovement.length - 1 && movePosition !== storeMovement.length - 1) {
-        const move = storeMovement[++movePosition]
-        loadCells(move)
-    }
-    if (movePosition === storeMovement.length - 1){
-        nextButton.disabled = true
+// check if Win or Draw
+function endGame() {
+    announceElement.innerText = draw ? `Draw!` : `${currentTurn} wins!`
+    toggleClick(false)
+    highlightWinCombination('show')
+    actionElement.classList.add('show')
+}
+// toggleClick Fn 
+function toggleClick(event) {
+    cellElements.forEach(cell => {
+        event === true ? (cell.classList.add('cursor-point'), 
+                          cell.addEventListener('click', handleClick))
+                       : (cell.classList.remove('cursor-point'), 
+                          cell.classList.add('cursor-not-allowed'),
+                          cell.removeEventListener('click', handleClick))
+    })
+}
+// highlight winning combination
+function highlightWinCombination(event) {
+    cellElements.forEach((cell, index) => {
+        winIndex.forEach( move => {
+            if (index === move) {
+                event === 'show' ? cell.classList.add('highlight-box') : cell.classList.remove('highlight-box')
+            }
+        })
+    })
+}
+// Action Button Fn
+// previousMove
+function previousMove() {
+    highlightWinCombination('hide')
+    movementCount--
+    if (movementCount > 0 ) {
+        if (movementCount === 1) {
+            previousButton.disabled = true
+        }
+        nextButton.disabled = false
+        showMove()
     }
 }
+// nextMove
+function nextMove() {
+    movementCount++
+    if (movementCount < gameState.length + 1) {
+        if (movementCount === gameState.length) {
+            console.log(movementCount === gameState.length);
+            nextButton.disabled = true
+            
+            // highlightWinCombination('show')
+        }
+        previousButton.disabled = false
+        showMove()
+        let cell = document.querySelectorAll('[data-cell]')
+        winIndex.forEach(index => {
+            cell[index].classList.add('highlight-box')
+            console.log(cell);
+        })
+    }
+}
+// show all moves throughout the game
+function showMove() {
+    let steps = []
+    board.innerHTML = ''
+
+    movementHistory = gameState[movementCount - 1]
+    movementHistory.forEach( index => {
+        console.log(index)
+        index.forEach(step => {
+            let div = document.createElement('div')
+            div.classList.add('cell')
+            div.setAttribute('data-cell', '')
+            div.innerText = step
+            
+            if (step != '') {
+                div.classList.add(step.toLowerCase())
+            }
+            board.append(div)
+            // steps.push(step)
+        })
+    })
+
+    // cellElements.forEach((cell, index) => {
+    //     cell.innerText = steps[index]
+    // })
+}
+// reset 
+const resetGame = () => {
+    location.reload()
+}
+
+// Event Listeners
+previousButton.addEventListener('click', previousMove)
+nextButton.addEventListener('click', nextMove)
+resetButton.addEventListener('click', resetGame)

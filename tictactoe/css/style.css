@@ -21,12 +21,6 @@ body {
     justify-content: center;
 
 }
-
-input[type=radio] {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-}
 /* Classes */
 .start-game-wrapper {
     display: flex;
@@ -88,23 +82,16 @@ button#o-turn {
     background-color: #ff6961;
 }
 
-button#start {
-    font-size: 1.5rem;
-    background: #fff;
-    border: 1px solid #000;
-    margin-top: 20px;
-    padding: .20em .5em;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease-out;
-}
-
-button#start:hover {
-    transform: scale(0.9);
-}
-
-button#start:active {
-    transform: scale(0.8);
+.announce-wrapper {
+    position: absolute;
+    top: 15vh;
+    display: flex;
+    width: 100%;
+    max-width: 300px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 3em;
 }
 
 .board {
@@ -131,6 +118,17 @@ button#start:active {
     background: #fff !important;
 }
 /* Cell Styling */
+.cursor-point {
+    cursor: pointer !important;
+}
+.cursor-not-allowed {
+    cursor: not-allowed !important;
+}
+
+.highlight-box {
+    background-color: #CBF0F6 !important;
+}
+
 .cell {
     width: var(--cell-size);
     height: var(--cell-size);
@@ -190,11 +188,6 @@ button#start:active {
     height: calc(var(--mark-size) * .5);
     background: #F6F7FF;
 }
-/* Set cursor: not-allowed when .cell hasClass(x || o) */
-.cell.x,
-.cell.o {
-    cursor: not-allowed;
-}
 /* Action Buttons */
 .action-buttons {
     position: absolute;
@@ -226,41 +219,4 @@ button#start:active {
 
 .action-buttons #next-button:hover{
     transform: rotate(30deg);
-}
-/* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    flex-direction: column;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, .7);
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    font-size: 5rem;
-}
-
-.modal button {
-    font-size: 3rem;
-    background: #fff;
-    border: 1px solid #000;
-    padding: .25em .5em;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease-out;
-}
-
-.modal button:hover {
-    transform: scale(0.9);
-}
-
-.modal button:active {
-    transform: scale(0.8);
-}
-
-.modal.show {
-    display: flex;
 }

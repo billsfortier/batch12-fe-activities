@@ -17,14 +17,17 @@
                 </div>
                 <div class="turn-input">
                     <div class="turn-x">
-                        <button id="x-turn">X</button>
+                        <button id="x-turn" class="player-button">X</button>
                     </div>
                     <div class="turn-o">
-                        <button id="o-turn">O</button>
+                        <button id="o-turn" class="player-button">O</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="announce-wrapper">
+        <span id="announce"></span>
     </div>
     <div class="board" id="board">
         <div class="cell" data-cell></div>
@@ -41,9 +44,6 @@
         <button id="previous-button"><i class="fas fa-undo-alt"></i></button>
         <button id="reset-button"><i class="fas fa-sync-alt"></i></button>
         <button id="next-button"><i class="fas fa-redo-alt"></i></button>
-    </div>
-    <div class="modal">
-        <div data-winning-message></div>
     </div>
     <script src="./js/app.js"></script>
 </body>
